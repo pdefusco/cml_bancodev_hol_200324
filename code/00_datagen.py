@@ -157,9 +157,9 @@ class BankDataGen:
 def main():
 
     USERNAME = os.environ["PROJECT_OWNER"]
-    DBNAME = "BNK_MLOPS_HOL_"+USERNAME
-    STORAGE = "s3a://goes-se-sandbox01"
-    CONNECTION_NAME = "se-aw-mdl"
+    DBNAME = "default"
+    STORAGE = "s3a://go01-demo"
+    CONNECTION_NAME = "go01-aw-dl"
 
     # Instantiate BankDataGen class
     dg = BankDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)
@@ -169,9 +169,6 @@ def main():
 
     # Create Banking Transactions DF
     df = dg.dataGen(spark)
-
-    # Create Spark Database
-    dg.createDatabase(spark)
 
     # Create Iceberg Table in Database
     dg.createOrReplace(df)
