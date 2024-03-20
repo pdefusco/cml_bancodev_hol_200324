@@ -66,12 +66,12 @@ spark = conn.get_spark_session()
 df_from_sql = ps.read_table('{0}.CC_TRX_{1}'.format(DBNAME, USERNAME))
 df = df_from_sql.to_pandas()
 
-test_size = 0.2
+test_size = 0.3
 X_train, X_test, y_train, y_test = train_test_split(df.drop("fraud_trx", axis=1), df["fraud_trx"], test_size=test_size)
 
 with mlflow.start_run():
 
-    model = XGBClassifier(use_label_encoder=False, max_depth=2, max_leaf_nodes=5, eval_metric="logloss")
+    model = XGBClassifier(use_label_encoder=False, eval_metric="logloss")
 
     # Step 1: cambiar test_size linea 69 y recorrer
     # Step 2: cambiar linea 74, agregar linea 96, y recorrer
@@ -93,8 +93,8 @@ with mlflow.start_run():
     mlflow.log_param("accuracy", accuracy)
     mlflow.log_param("test_size", test_size)
 
-    mlflow.log_param("max_depth", 2)
-    mlflow.log_param("max_leaf_nodes", 5)
+    #Step 2:
+    #Step 3:
 
     mlflow.xgboost.log_model(model, artifact_path="artifacts")#, registered_model_name="my_xgboost_model"
 
