@@ -54,9 +54,8 @@ class BankDataGen:
 
     '''Class to Generate Banking Data'''
 
-    def __init__(self, username, dbname, storage, connectionName):
+    def __init__(self, username, dbname, connectionName):
         self.username = username
-        self.storage = storage
         self.dbname = dbname
         self.connectionName = connectionName
 
@@ -111,25 +110,6 @@ class BankDataGen:
         return spark
 
 
-    def saveFileToCloud(self, df):
-        """
-        Method to save credit card transactions df as csv in cloud storage
-        """
-
-        df.write.format("csv").mode('overwrite').save(self.storage + "/bank_fraud_demo/" + self.username)
-
-
-    def createDatabase(self, spark):
-        """
-        Method to create database before data generated is saved to new database and table
-        """
-
-        spark.sql("CREATE DATABASE IF NOT EXISTS {}".format(self.dbname))
-
-        print("SHOW DATABASES LIKE '{}'".format(self.dbname))
-        spark.sql("SHOW DATABASES LIKE '{}'".format(self.dbname)).show()
-
-
     def createOrReplace(self, df):
         """
         Method to create or append data to the BANKING TRANSACTIONS table
@@ -157,12 +137,11 @@ class BankDataGen:
 def main():
 
     USERNAME = os.environ["PROJECT_OWNER"]
-    DBNAME = "default"
-    STORAGE = "s3a://go01-demo"
-    CONNECTION_NAME = "go01-aw-dl"
+    DBNAME = "proceso"
+    CONNECTION_NAME = "bco-cdp-prd-datalake"
 
     # Instantiate BankDataGen class
-    dg = BankDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)
+    dg = BankDataGen(USERNAME, DBNAME, CONNECTION_NAME)
 
     # Create CML Spark Connection
     spark = dg.createSparkConnection()

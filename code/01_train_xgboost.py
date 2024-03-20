@@ -51,9 +51,8 @@ import pyspark.pandas as ps
 
 
 USERNAME = os.environ["PROJECT_OWNER"]
-DBNAME = "default"
-STORAGE = "s3a://go01-demo/"
-CONNECTION_NAME = "go01-aw-dl"
+DBNAME = "proceso"
+CONNECTION_NAME = "bco-cdp-prd-datalake"
 
 DATE = date.today()
 EXPERIMENT_NAME = "xgb-cc-fraud-{0}-{1}".format(USERNAME, DATE)
