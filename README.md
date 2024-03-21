@@ -194,14 +194,9 @@ En la misma sesión, ejecuta el script "02_cml_api_endpoint.py". Sal del proyect
 ![alt text](img/mlops14.png)
 
 
-##### Despliegue de un Modelo desde el Registry a un API Endpoint.
+### Fase de Producción
 
-Esto será demostrado por un miembro del equipo de administradores de CML.
-
-##### Redespliegue del modelo con Recursos Adicionales.
-
-Esto será demostrado por un miembro del equipo de administradores de CML.
-
+El Despliegue de un Modelo desde el Registry a un API Endpoint y el redespliegue con Recursos Adicionales serán demostrados por un miembro del equipo de admin.
 
 ### Resumen
 
