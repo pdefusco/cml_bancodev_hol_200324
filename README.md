@@ -106,31 +106,44 @@ Enable Spark: Spark 3.2
 Resource Profile: 2 CPU / 4 GB Mem / 0 GPU
 ```
 
-Abre el terminal y instale los paquetes ejecutando el siguiente comando:
+Abre el terminal y instale los paquetes ejecutando el siguiente comando. Espera que la instalación de los paquetes termine antes que proseguir.
 
 ```
 pip3 install -r requirements.txt
 ```
 
+![alt text](img/mlops1.png)
+
+
 ##### Creación de Tabla de Iceberg con Datos de Transacciones de Tarjeta de Crédito
 
-Abre el script "00_datagen.py" y lo ejecute. No se requieren cambios de codigo.
+Abre el script "00_datagen.py" y lo ejecute. No se requieren cambios de código. Note que el código comenzara a ejecutar a la derecha de la pantalla.
 
-# screenshot here
+![alt text](img/mlops2.png)
 
 ##### Entrenamiento de Modelo XGBoost
 
-Abre el script "01_train_xgboost.py" y lo ejecute enteramente sin cambios de codigo.
+Abre el script "01_train_xgboost.py" y lo ejecute enteramente sin cambios de código.
 
-Sal de la sesion sin terminarla y entre en la pagina de Experiments. Mire su experimento. Abrelo y familiarizate con la interfaz de MLFlow Tracking.
+Sal de la sesión sin terminarla y entre en la pagina de Experiments. Mire su experimento. Abrelo y familiarízate con la interfaz de MLFlow Tracking.
 
-#screenshot here
+![alt text](img/mlops3.png)
 
-Luego, cambia el valor de la variable test_size en la línea 68 de 0.3 a 0.2 y vuelve a ejecutar todo el script.
+![alt text](img/mlops4.png)
+
+![alt text](img/mlops5.png)
+
+![alt text](img/mlops6.png)
+
+![alt text](img/mlops7.png)
+
+Luego, regresa en la sesión y cambia el valor de la variable test_size en la línea 68 de 0.3 a 0.2 y vuelve a ejecutar todo el script.
+
+![alt text](img/mlops8.png)
 
 Vuelve a la interfaz de MLFlow Tracking y observa la nueva ejecución del experimento ("Experiment Run").
 
-#screenshot here
+![alt text](img/mlops9.png)
 
 Reemplaza la línea 74 con la siguiente línea de código para establecer el hiperparámetro del modelo "max_depth":
 
@@ -144,7 +157,9 @@ En la línea 96, agrega esta línea de código para monitorear el nuevo hiperpar
 mlflow.log_param("max_depth", 4)
 ```
 
-#screenshot here
+Vuelve a ejectar el script y note la nueva Experiment Run en la pagina de Experiments:
+
+![alt text](img/mlops10.png)
 
 Cambia la línea 74 y la línea 96 con lo siguiente, y agrega la línea 97:
 
@@ -163,11 +178,21 @@ mlflow.log_param("max_depth", 2)
 mlflow.log_param("max_leaf_nodes", 5)
 ```
 
-Vuelve a ejecutar todo el script. Luego, navega de regreso a MLFlow Tracking para validar el nuevo experimento.
+Vuelve a ejecutar todo el script. Luego, navega de regreso a MLFlow Tracking para observar la nuevo ejecución del experimento.
+
+![alt text](img/mlops11.png)
+
 
 ##### Despliegue de Experimento en el Registry de MLFlow
 
 En la misma sesión, ejecuta el script "02_cml_api_endpoint.py". Sal del proyecto y abre la página del Registro de MLFlow. Valida que tu modelo haya sido registrado.
+
+![alt text](img/mlops12.png)
+
+![alt text](img/mlops13.png)
+
+![alt text](img/mlops14.png)
+
 
 ##### Despliegue de un Modelo desde el Registry a un API Endpoint.
 
@@ -180,7 +205,7 @@ Esto será demostrado por un miembro del equipo de administradores de CML.
 
 ### Resumen
 
-En esta segunda sesión, utilizaste Sesiones de CML, MLFlow y la API de CML para desplegar un modelo de aprendizaje automático y procesos basicos de MLOps. En conclusion:
+En esta segunda sesión, utilizaste Sesiones de CML, MLFlow y la API de CML para desplegar un modelo de aprendizaje automático y procesos básicos de MLOps. En conclusion:
 
 * En grandes organizaciones, generalmente se despliegan múltiples Workspaces para separar los ambientes de desarrollo y producción.
 
