@@ -72,7 +72,7 @@ with mlflow.start_run():
 
     model = XGBClassifier(use_label_encoder=False, eval_metric="logloss")
 
-    # Step 1: cambiar test_size linea 69 y recorrer
+    # Step 1: cambiar test_size linea 68 y recorrer
     # Step 2: cambiar linea 74, agregar linea 96, y recorrer
       # linea 74: model = XGBClassifier(use_label_encoder=False, max_depth=4, eval_metric="logloss")
       # linea 96: mlflow.log_param("max_depth", 4)
